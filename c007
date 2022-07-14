@@ -9,7 +9,18 @@ void printw(char c)
 
 void test(int b)
 {
-    if(b>=10)
+    if(b>=2147483647) {
+		write(1,"-2",2);
+		test(147483648);
+	}
+    
+    else if(b<0) {
+        printw('-');
+        (b *= -1);
+        test(b);
+    }
+
+    else if(b>=10)
         {
             // printw('b');
             // printf("=%d",b);
@@ -32,6 +43,12 @@ void test(int b)
         // printw('-');
         printw(b+48);
     }
+}
+
+int main()
+{
+    test(-2147483648);
+    return 0;
 }
 
 int main()
