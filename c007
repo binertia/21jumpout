@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <unistd.h>
+
+
+void printw(char c)
+{
+    write(1, &c,1);
+}
+
+void test(int b)
+{
+    if(b>=10)
+        {
+            // printw('b');
+            // printf("=%d",b);
+            // printw('*');
+            test(b / 10); //3210 > 321 > 32  = 3 for 1st int and run other
+            // printw('>');
+            // printf("<%d",b);            
+            test(b % 10);  // after got 1st int (3 from b/10)  excecute the rest 10^2 b: 32 %10 =2 > 321 %10 = 1 > 3210 %10  = 0 ;
+            // printw(',');
+        }
+    else if(b<0)
+        {
+            printw('-');
+            (b *= -1);
+            test(b);
+        }
+        
+    else
+    {
+        // printw('-');
+        printw(b+48);
+    }
+}
+
+int main()
+{
+    test(-3210);
+    return 0;
+}
