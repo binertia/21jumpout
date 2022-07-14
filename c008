@@ -1,0 +1,49 @@
+#include <unistd.h>
+#include <stdio.h>
+
+void	ft_buddha(int run[], int n)
+{
+	int		a;
+	char	c;
+
+	a = -1;
+	while (++a < n)
+	{
+		c = run[a] + '0';
+		write(1, &c, 1);
+	}
+	
+	if (run[0] != 10 - n)
+		write(1, ", ", 2);
+}
+
+void	ft_jesus(int run[], int n, int i)
+{
+	if (i > 0)
+		run[i] = run[i - 1] + 1;
+	else
+		run[i] = 0;
+
+	while (run[i] < 10 + i - n)
+	{
+		if (i == n - 1)
+		    {
+			ft_buddha(run, n);
+		       printf("%d",i);
+		    }
+		else
+			ft_jesus(run, n, i + 1);
+		run[i] = run[i] + 1;
+	}
+}
+
+void	ft_print_combn(int n)
+{
+	int	run[n];
+	ft_jesus(run, n, 0);
+}
+
+int main(){
+    ft_print_combn(3);
+    return 0;
+}
