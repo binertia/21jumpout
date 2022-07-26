@@ -153,8 +153,6 @@ int	main(int argc, char **argv)
 	fill_zero(map, n);
 	if (!recursive_fill_nbr(map, n, 0, 0))
 		printf("Noob\n");
-	while (j++ < n)
-		free(map[i]);
 	free(map);
 	return (0);
 }
